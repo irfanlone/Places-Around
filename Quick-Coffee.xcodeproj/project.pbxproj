@@ -13,6 +13,8 @@
 		172CD8261C9E2CF20053E955 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 172CD8241C9E2CF20053E955 /* Main.storyboard */; };
 		172CD8281C9E2CF20053E955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 172CD8271C9E2CF20053E955 /* Assets.xcassets */; };
 		172CD82B1C9E2CF20053E955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 172CD8291C9E2CF20053E955 /* LaunchScreen.storyboard */; };
+		17E871991C9F89B8006D5926 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E871981C9F89B8006D5926 /* Venue.swift */; };
+		17E8719B1C9F8D85006D5926 /* VenueTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E8719A1C9F8D85006D5926 /* VenueTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		172CD8271C9E2CF20053E955 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		172CD82A1C9E2CF20053E955 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		172CD82C1C9E2CF20053E955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17E871981C9F89B8006D5926 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		17E8719A1C9F8D85006D5926 /* VenueTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				172CD8291C9E2CF20053E955 /* LaunchScreen.storyboard */,
 				172CD82C1C9E2CF20053E955 /* Info.plist */,
 				1722749F1C9F3B0200C1A59D /* Networking.swift */,
+				17E871981C9F89B8006D5926 /* Venue.swift */,
+				17E8719A1C9F8D85006D5926 /* VenueTableCell.swift */,
 			);
 			path = "Quick-Coffee";
 			sourceTree = "<group>";
@@ -140,8 +146,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				172274A01C9F3B0200C1A59D /* Networking.swift in Sources */,
+				17E871991C9F89B8006D5926 /* Venue.swift in Sources */,
 				172CD8231C9E2CF20053E955 /* ViewController.swift in Sources */,
 				172CD8211C9E2CF20053E955 /* AppDelegate.swift in Sources */,
+				17E8719B1C9F8D85006D5926 /* VenueTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
