@@ -13,8 +13,13 @@
 		172CD8261C9E2CF20053E955 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 172CD8241C9E2CF20053E955 /* Main.storyboard */; };
 		172CD8281C9E2CF20053E955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 172CD8271C9E2CF20053E955 /* Assets.xcassets */; };
 		172CD82B1C9E2CF20053E955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 172CD8291C9E2CF20053E955 /* LaunchScreen.storyboard */; };
+		17B3CBE61C9FFE76002A5790 /* PhotosCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B3CBE51C9FFE76002A5790 /* PhotosCollectionView.swift */; };
+		17B3CBE81CA0013E002A5790 /* VenuesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B3CBE71CA0013E002A5790 /* VenuesTableView.swift */; };
 		17E871991C9F89B8006D5926 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E871981C9F89B8006D5926 /* Venue.swift */; };
 		17E8719B1C9F8D85006D5926 /* VenueTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E8719A1C9F8D85006D5926 /* VenueTableCell.swift */; };
+		17E8719D1C9FC6AC006D5926 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E8719C1C9FC6AC006D5926 /* DetailViewController.swift */; };
+		17E8719F1C9FE553006D5926 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E8719E1C9FE553006D5926 /* MapView.swift */; };
+		17E871A11C9FFAA5006D5926 /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E871A01C9FFAA5006D5926 /* PhotosCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +31,13 @@
 		172CD8271C9E2CF20053E955 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		172CD82A1C9E2CF20053E955 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		172CD82C1C9E2CF20053E955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17B3CBE51C9FFE76002A5790 /* PhotosCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionView.swift; sourceTree = "<group>"; };
+		17B3CBE71CA0013E002A5790 /* VenuesTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuesTableView.swift; sourceTree = "<group>"; };
 		17E871981C9F89B8006D5926 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		17E8719A1C9F8D85006D5926 /* VenueTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableCell.swift; sourceTree = "<group>"; };
+		17E8719C1C9FC6AC006D5926 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		17E8719E1C9FE553006D5926 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		17E871A01C9FFAA5006D5926 /* PhotosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +72,18 @@
 			children = (
 				172CD8201C9E2CF20053E955 /* AppDelegate.swift */,
 				172CD8221C9E2CF20053E955 /* ViewController.swift */,
+				1722749F1C9F3B0200C1A59D /* Networking.swift */,
+				17E871981C9F89B8006D5926 /* Venue.swift */,
+				17E8719A1C9F8D85006D5926 /* VenueTableCell.swift */,
+				17E8719C1C9FC6AC006D5926 /* DetailViewController.swift */,
+				17E8719E1C9FE553006D5926 /* MapView.swift */,
+				17E871A01C9FFAA5006D5926 /* PhotosCell.swift */,
+				17B3CBE51C9FFE76002A5790 /* PhotosCollectionView.swift */,
+				17B3CBE71CA0013E002A5790 /* VenuesTableView.swift */,
 				172CD8241C9E2CF20053E955 /* Main.storyboard */,
 				172CD8271C9E2CF20053E955 /* Assets.xcassets */,
 				172CD8291C9E2CF20053E955 /* LaunchScreen.storyboard */,
 				172CD82C1C9E2CF20053E955 /* Info.plist */,
-				1722749F1C9F3B0200C1A59D /* Networking.swift */,
-				17E871981C9F89B8006D5926 /* Venue.swift */,
-				17E8719A1C9F8D85006D5926 /* VenueTableCell.swift */,
 			);
 			path = "Quick-Coffee";
 			sourceTree = "<group>";
@@ -145,9 +160,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17B3CBE61C9FFE76002A5790 /* PhotosCollectionView.swift in Sources */,
+				17B3CBE81CA0013E002A5790 /* VenuesTableView.swift in Sources */,
+				17E871A11C9FFAA5006D5926 /* PhotosCell.swift in Sources */,
+				17E8719F1C9FE553006D5926 /* MapView.swift in Sources */,
 				172274A01C9F3B0200C1A59D /* Networking.swift in Sources */,
 				17E871991C9F89B8006D5926 /* Venue.swift in Sources */,
 				172CD8231C9E2CF20053E955 /* ViewController.swift in Sources */,
+				17E8719D1C9FC6AC006D5926 /* DetailViewController.swift in Sources */,
 				172CD8211C9E2CF20053E955 /* AppDelegate.swift in Sources */,
 				17E8719B1C9F8D85006D5926 /* VenueTableCell.swift in Sources */,
 			);

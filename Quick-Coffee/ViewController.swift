@@ -15,19 +15,18 @@ import UIKit
 import CoreLocation
 
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
     var list : [Venue] = []
     var locationManager : CLLocationManager!
     var currentLocation : CLLocation!
-
-    
     @IBOutlet var tableView: UITableView!
+    var selectedIndexPath : NSIndexPath!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.initLocationManager()        
+        self.initLocationManager()
     }
 
     func initLocationManager() {
@@ -91,8 +90,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let street = location["address"] as! String
             let city = location["city"] as! String
             let address = "\(street), \(city)"
-            
             let distance = location["distance"] as! Float64
+            let latitude = location["lat"] as! Float64
+            let longitude = location["lng"] as! Float64
 
             let contact = venueItem!["contact"] as! NSDictionary
             var phoneNumber : String!
@@ -110,38 +110,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 menuUrl = ""
             }
             
-            let venueObj = Venue(_name: name, _address: address, _website: url, _menuUrl:menuUrl, _phone: phoneNumber, _distance: distance, _iconUrl: "")
+            let identifier = venueItem!["id"] as! String
+            
+            let venueObj = Venue(_id: identifier, _name: name, _address: address, _website: url, _menuUrl:menuUrl, _phone: phoneNumber, _distance: distance, _lat: latitude, _lng: longitude, _iconUrl: "")
             self.list.append(venueObj)
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+
+    // MARK: - Navigation
     
-    // MARK: - UITableViewDataSource
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
-    }
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1;
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let reuseIdentifier = "cell";
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as? VenueTableCell
-        let obj = list[indexPath.row]
-        cell?.configureCell(obj.name, _address: obj.address, _distance: obj.distance)
-        return cell!;
-    }
-    
-    // MARK: - UITableViewDelegate
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "detail" {
+            let dvc = segue.destinationViewController as! DetailViewController
+            dvc.venue = self.list[self.selectedIndexPath.row]
+        }
     }
     
     // MARK: - Location Manager

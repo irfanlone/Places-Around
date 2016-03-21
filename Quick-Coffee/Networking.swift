@@ -32,12 +32,10 @@ class Networking: NSObject {
             let httpRespose: NSHTTPURLResponse = response as! NSHTTPURLResponse
             let responseObj = NetworkResponseObj(_data: data!, _response: httpRespose, _error: error)
             if error != nil {
-                // -> failure
                 print("error: \(error!.localizedDescription): \(error!.userInfo)")
                 completion(false, responseObj)
             }
             else if data != nil {
-                // -> success
                 completion(true, responseObj)
             }
         })
