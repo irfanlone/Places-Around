@@ -7,6 +7,7 @@
 //
 
 struct Location {
+    
     var address : String!
     var lattitue : Float64!
     var longitude : Float64!

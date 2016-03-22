@@ -14,6 +14,12 @@ struct NetworkResponseObj {
     var response: NSHTTPURLResponse!
     var error: NSError!
     
+    init() {
+        self.data = nil
+        self.response = nil
+        self.error = nil
+    }
+    
     init(_data: NSData, _response: NSHTTPURLResponse, _error: NSError!) {
         self.data = _data
         self.response = _response
@@ -29,8 +35,15 @@ class Networking: NSObject {
         
         let task = session.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
             
-            let httpRespose: NSHTTPURLResponse = response as! NSHTTPURLResponse
+            guard let respose = response else {
+                let resObj = NetworkResponseObj()
+                completion(false, resObj)
+                return
+            }
+
+            let httpRespose = respose as! NSHTTPURLResponse
             let responseObj = NetworkResponseObj(_data: data!, _response: httpRespose, _error: error)
+            
             if error != nil {
                 print("error: \(error!.localizedDescription): \(error!.userInfo)")
                 completion(false, responseObj)
@@ -38,6 +51,7 @@ class Networking: NSObject {
             else if data != nil {
                 completion(true, responseObj)
             }
+            
         })
         task.resume()
     }

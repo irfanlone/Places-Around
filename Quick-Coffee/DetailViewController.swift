@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     var annotation : MKPointAnnotation!
     var photosList : [AnyObject] = []
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var seeAllPhotosButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,12 @@ class DetailViewController: UIViewController {
         self.centerMapOnLocation(initialLocation)
         self.mapView.delegate = self
         self.loadPhotos()
+        self.AddBorderToSeeAllPhotosButton()
+    }
+    
+    func AddBorderToSeeAllPhotosButton() {
+        self.seeAllPhotosButton.layer.borderWidth = 1.0
+        self.seeAllPhotosButton.layer.borderColor = UIColor.darkGrayColor().CGColor
     }
     
     let regionRadius: CLLocationDistance = 700
@@ -75,4 +82,10 @@ class DetailViewController: UIViewController {
         }
     }
 
+    @IBAction func seeAllPhotosClicked(sender: AnyObject) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("photosStoryboard") as! PhotosViewController
+        vc.venue = self.venue
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
 }
