@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension DetailViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension DetailViewController : UICollectionViewDataSource {
 
     // Mark: - UICollectionView Datasource
     
@@ -56,19 +56,5 @@ extension DetailViewController : UICollectionViewDataSource, UICollectionViewDel
         }
         return cell
     }
-
-    // Mark:- UICollectionViewDelegate
     
-    
-    
-    // Mark: - UICollectionViewDelegateFlowLayout
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, 0, 0, 0)
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(122, 122);
-    }
-
 }

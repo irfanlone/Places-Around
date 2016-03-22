@@ -10,6 +10,7 @@ import UIKit
 
 
 struct NetworkResponseObj {
+    
     var data: NSData!
     var response: NSHTTPURLResponse!
     var error: NSError!

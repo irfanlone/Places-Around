@@ -8,9 +8,9 @@
 
 import UIKit
 
-class PhotosViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class PhotosViewController: UIViewController, UICollectionViewDataSource {
     
-    var photosList : [AnyObject] = []
+    private var photosList : [AnyObject] = []
     var venue : Venue!
     @IBOutlet var collectionView: UICollectionView!
     
@@ -104,11 +104,18 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
         return cell
     }
     
+}
+
+
+
+extension PhotosViewController : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
     // Mark: - UICollectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("page") as! PhotosPageViewController
-        vc.venuePhotos = self.photosList
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("photosPageView") as! PhotosPageViewController
+        vc.photosList = photosList
+        vc.currentIndex = indexPath.row
         self.presentViewController(vc, animated: true, completion: nil)
     }
     
@@ -131,5 +138,4 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
         return 5
     }
     
-
 }

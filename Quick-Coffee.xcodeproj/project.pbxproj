@@ -16,7 +16,8 @@
 		17B3CBE61C9FFE76002A5790 /* PhotosCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B3CBE51C9FFE76002A5790 /* PhotosCollectionView.swift */; };
 		17B3CBE81CA0013E002A5790 /* VenuesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B3CBE71CA0013E002A5790 /* VenuesTableView.swift */; };
 		17B3CBEA1CA0FA19002A5790 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B3CBE91CA0FA19002A5790 /* PhotosViewController.swift */; };
-		17B3CBED1CA109FF002A5790 /* PhotosPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B3CBEC1CA109FF002A5790 /* PhotosPageViewController.swift */; };
+		17B3CBEF1CA135C9002A5790 /* PhotosPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B3CBEE1CA135C9002A5790 /* PhotosPageViewController.swift */; };
+		17B3CBF11CA1384C002A5790 /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B3CBF01CA1384C002A5790 /* PageItemController.swift */; };
 		17E871991C9F89B8006D5926 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E871981C9F89B8006D5926 /* Venue.swift */; };
 		17E8719B1C9F8D85006D5926 /* VenueTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E8719A1C9F8D85006D5926 /* VenueTableCell.swift */; };
 		17E8719D1C9FC6AC006D5926 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E8719C1C9FC6AC006D5926 /* DetailViewController.swift */; };
@@ -36,7 +37,8 @@
 		17B3CBE51C9FFE76002A5790 /* PhotosCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionView.swift; sourceTree = "<group>"; };
 		17B3CBE71CA0013E002A5790 /* VenuesTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuesTableView.swift; sourceTree = "<group>"; };
 		17B3CBE91CA0FA19002A5790 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
-		17B3CBEC1CA109FF002A5790 /* PhotosPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosPageViewController.swift; sourceTree = "<group>"; };
+		17B3CBEE1CA135C9002A5790 /* PhotosPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosPageViewController.swift; sourceTree = "<group>"; };
+		17B3CBF01CA1384C002A5790 /* PageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageItemController.swift; sourceTree = "<group>"; };
 		17E871981C9F89B8006D5926 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		17E8719A1C9F8D85006D5926 /* VenueTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableCell.swift; sourceTree = "<group>"; };
 		17E8719C1C9FC6AC006D5926 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +91,8 @@
 				172CD8271C9E2CF20053E955 /* Assets.xcassets */,
 				172CD8291C9E2CF20053E955 /* LaunchScreen.storyboard */,
 				172CD82C1C9E2CF20053E955 /* Info.plist */,
-				17B3CBEC1CA109FF002A5790 /* PhotosPageViewController.swift */,
+				17B3CBEE1CA135C9002A5790 /* PhotosPageViewController.swift */,
+				17B3CBF01CA1384C002A5790 /* PageItemController.swift */,
 			);
 			path = "Quick-Coffee";
 			sourceTree = "<group>";
@@ -168,11 +171,12 @@
 			files = (
 				17B3CBE61C9FFE76002A5790 /* PhotosCollectionView.swift in Sources */,
 				17B3CBEA1CA0FA19002A5790 /* PhotosViewController.swift in Sources */,
-				17B3CBED1CA109FF002A5790 /* PhotosPageViewController.swift in Sources */,
+				17B3CBEF1CA135C9002A5790 /* PhotosPageViewController.swift in Sources */,
 				17B3CBE81CA0013E002A5790 /* VenuesTableView.swift in Sources */,
 				17E871A11C9FFAA5006D5926 /* PhotosCell.swift in Sources */,
 				17E8719F1C9FE553006D5926 /* MapView.swift in Sources */,
 				172274A01C9F3B0200C1A59D /* Networking.swift in Sources */,
+				17B3CBF11CA1384C002A5790 /* PageItemController.swift in Sources */,
 				17E871991C9F89B8006D5926 /* Venue.swift in Sources */,
 				172CD8231C9E2CF20053E955 /* ViewController.swift in Sources */,
 				17E8719D1C9FC6AC006D5926 /* DetailViewController.swift in Sources */,

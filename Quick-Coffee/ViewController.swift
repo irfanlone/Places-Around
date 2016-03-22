@@ -15,13 +15,28 @@ import UIKit
 import CoreLocation
 
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController {
 
     var list : [Venue] = []
     var locationManager : CLLocationManager!
     var currentLocation : CLLocation!
     @IBOutlet var tableView: UITableView!
     var selectedIndexPath : NSIndexPath!
+    var activityIndicator : UIActivityIndicatorView!
+    
+    override func loadView() {
+        super.loadView()
+        self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle:.WhiteLarge)
+        self.activityIndicator.color = UIColor.grayColor()
+        self.view.addSubview(self.activityIndicator)
+        self.activityIndicator.startAnimating()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        let viewBounds : CGRect = self.view.bounds
+        self.activityIndicator.center = CGPointMake(CGRectGetMidX(viewBounds), CGRectGetMidY(viewBounds))
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +69,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         let url = NSURL(string: urlString as String)
         netWrkObj.getDataAtUrl(url!) { (success, obj) -> (Void) in
-            if success == false {
+            guard success == true else {
                 return;
             }
             var parsed : AnyObject!
@@ -67,6 +82,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.processJsonData(parsed)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.tableView.reloadData()
+                self.activityIndicator.stopAnimating()
             })
         }
     }
@@ -129,7 +145,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             dvc.venue = self.list[self.selectedIndexPath.row]
         }
     }
-    
+
+}
+
+
+extension ViewController : CLLocationManagerDelegate {
+
     // MARK: - Location Manager
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
@@ -139,7 +160,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.currentLocation = newLocation;
         self.loadVenues()
     }
-    
 
 }
 

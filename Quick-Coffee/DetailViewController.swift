@@ -18,10 +18,12 @@ class DetailViewController: UIViewController {
     var photosList : [AnyObject] = []
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var seeAllPhotosButton: UIButton!
+    @IBOutlet weak var address: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.name.text = self.venue.name
+        self.address.text = self.venue.location.address
         let initialLocation = CLLocation(latitude: venue.location.lattitue, longitude: venue.location.longitude)
         self.centerMapOnLocation(initialLocation)
         self.mapView.delegate = self
@@ -89,3 +91,27 @@ class DetailViewController: UIViewController {
     }
     
 }
+
+extension DetailViewController : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
+    // Mark:- UICollectionViewDelegate
+
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("photosPageView") as! PhotosPageViewController
+        vc.photosList = photosList
+        vc.currentIndex = indexPath.row
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+
+    // Mark: - UICollectionViewDelegateFlowLayout
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(122, 122);
+    }
+    
+}
+
