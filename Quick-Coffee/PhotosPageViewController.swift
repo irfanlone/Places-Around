@@ -20,8 +20,9 @@ class PhotosPageViewController: UIViewController, UIPageViewControllerDataSource
         
         self.createPageViewController()
         self.setupPageControl()
+        
     }
-
+    
     private func createPageViewController() {
         
         let pageController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("pageController") as! UIPageViewController

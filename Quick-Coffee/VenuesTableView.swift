@@ -24,7 +24,8 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
         let reuseIdentifier = "cell";
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as? VenueTableCell
         let obj = list[indexPath.row]
-        cell?.configureCell(obj.name, _address: obj.location.address, _distance: obj.location.distance)
+        cell!.configureCell(obj.name, _address: obj.location.address, _distance: obj.location.distance)
+
         return cell!;
     }
     

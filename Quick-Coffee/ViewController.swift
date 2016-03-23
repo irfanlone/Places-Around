@@ -42,7 +42,32 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.initLocationManager()
+        
+        self.view.backgroundColor = UIColor.blackColor()
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
+    
+    func animateTable() {
+        
+        self.tableView.reloadData()
+        let cells = tableView.visibleCells
+        let tableHeight: CGFloat = tableView.bounds.size.height
+        
+        for i in cells {
+            let cell: UITableViewCell = i as UITableViewCell
+            cell.transform = CGAffineTransformMakeTranslation(0, tableHeight)
+        }
+        
+        var index = 0
+        for a in cells {
+            let cell: UITableViewCell = a as UITableViewCell
+            UIView.animateWithDuration(1.5, delay: 0.1 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+                    cell.transform = CGAffineTransformMakeTranslation(0, 0);
+                }, completion: nil)
+            index += 1
+        }
+    }
+
 
     func initLocationManager() {
         locationManager = CLLocationManager()
@@ -81,7 +106,7 @@ class ViewController: UIViewController {
             }
             self.processJsonData(parsed)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadData()
+                self.animateTable()
                 self.activityIndicator.stopAnimating()
             })
         }

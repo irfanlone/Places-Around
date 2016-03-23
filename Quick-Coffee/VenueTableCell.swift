@@ -14,6 +14,8 @@ class VenueTableCell: UITableViewCell {
     @IBOutlet var address: UILabel!
     @IBOutlet var distance: UILabel!
     
+    let gradientLayer = CAGradientLayer()
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -23,9 +25,9 @@ class VenueTableCell: UITableViewCell {
     }
     
     func configureCell(_name: String, _address: String, _distance: Float64) {
-        self.name.text = _name
-        self.address.text = _address
-        self.distance.text = "\(_distance/1000) miles away"
+        self.name?.text = _name
+        self.address?.text = _address
+        self.distance?.text = "\(_distance/1000) miles away"
     }
 
 }

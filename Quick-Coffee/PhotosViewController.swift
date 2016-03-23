@@ -17,6 +17,21 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadPhotos()
+        
+        self.collectionView.transform = CGAffineTransformMakeScale(0.5, 0.5)
+        self.collectionView.alpha = 0
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animateWithDuration(0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .CurveEaseIn, animations: { () -> Void in
+            
+            self.collectionView.transform = CGAffineTransformMakeScale(1, 1)
+            self.collectionView.alpha = 1
+            
+            }, completion: nil )
     }
 
     func loadPhotos() {

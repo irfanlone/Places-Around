@@ -19,6 +19,10 @@ class DetailViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var seeAllPhotosButton: UIButton!
     @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var seeAllPhotos: UIButton!
+    @IBOutlet weak var Menu: UILabel!
+    @IBOutlet weak var Website: UILabel!
+    @IBOutlet weak var phoneNumber: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +33,56 @@ class DetailViewController: UIViewController {
         self.mapView.delegate = self
         self.loadPhotos()
         self.AddBorderToSeeAllPhotosButton()
+        
+        self.preAnimationTransformation()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animateWithDuration(0.5, delay: 0.1, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .CurveEaseIn, animations: { () -> Void in
+            
+            self.animationTransformation()
+            
+            }, completion: nil )
+    }
+
+    func preAnimationTransformation() {
+        self.mapView.alpha = 0
+        self.mapView.transform = CGAffineTransformMakeScale(0.5, 0.5)
+        self.collectionView.alpha = 0
+        self.collectionView.transform = CGAffineTransformMakeScale(0.5, 0.5)
+        self.name.transform = CGAffineTransformMakeScale(0.5, 0.5)
+        self.name.alpha = 0
+        self.address.transform = CGAffineTransformMakeScale(0.5, 0.5)
+        self.address.alpha = 0
+        self.Menu.transform = CGAffineTransformMakeScale(0.5, 0.5)
+        self.Menu.alpha = 0
+        self.Website.transform = CGAffineTransformMakeScale(0.5, 0.5)
+        self.Website.alpha = 0
+        self.phoneNumber.transform = CGAffineTransformMakeScale(0.5, 0.5)
+        self.phoneNumber.alpha = 0
+        self.seeAllPhotos.transform = CGAffineTransformMakeScale(0.5, 0.5)
+        self.seeAllPhotos.alpha = 0
+    }
+    
+    func animationTransformation() {
+        self.mapView.transform = CGAffineTransformMakeScale(1, 1)
+        self.mapView.alpha = 1
+        self.collectionView.transform = CGAffineTransformMakeScale(1, 1)
+        self.collectionView.alpha = 1
+        self.name.transform = CGAffineTransformMakeScale(1, 1)
+        self.name.alpha = 1
+        self.address.transform = CGAffineTransformMakeScale(1, 1)
+        self.address.alpha = 1
+        self.Menu.transform = CGAffineTransformMakeScale(1, 1)
+        self.Menu.alpha = 1
+        self.Website.transform = CGAffineTransformMakeScale(1, 1)
+        self.Website.alpha = 1
+        self.phoneNumber.transform = CGAffineTransformMakeScale(1, 1)
+        self.phoneNumber.alpha = 1
+        self.seeAllPhotos.transform = CGAffineTransformMakeScale(1, 1)
+        self.seeAllPhotos.alpha = 1
     }
     
     func AddBorderToSeeAllPhotosButton() {
