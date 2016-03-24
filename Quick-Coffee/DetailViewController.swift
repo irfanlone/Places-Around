@@ -23,9 +23,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var Menu: UILabel!
     @IBOutlet weak var Website: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
+    var dataSource : AbstractCollectionViewDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.dataSource = AbstractCollectionViewDataSource()
+        self.collectionView.dataSource = dataSource
+        
         self.name.text = self.venue.name
         self.address.text = self.venue.location.address
         let initialLocation = CLLocation(latitude: venue.location.lattitue, longitude: venue.location.longitude)
@@ -104,6 +109,8 @@ class DetailViewController: UIViewController {
         self.mapView .addAnnotation(annotation)
     }
     
+    // Mark:- private
+
     func loadPhotos() {
 
         let netWrkObj = Networking()
@@ -133,6 +140,7 @@ class DetailViewController: UIViewController {
             let items = photos.valueForKey("items") as! NSArray
             self.photosList = items as [AnyObject]
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.dataSource.photosList = self.photosList
                 self.collectionView.reloadData()
             })
         }
