@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     var selectedIndexPath : NSIndexPath!
     var activityIndicator : UIActivityIndicatorView!
+    var category : ItemCategory!
+    
     
     override func loadView() {
         super.loadView()
@@ -43,8 +45,20 @@ class ViewController: UIViewController {
         
         self.initLocationManager()
         
-        self.view.backgroundColor = UIColor.blackColor()
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.title = "Places"
+        let rightButton : UIBarButtonItem = UIBarButtonItem(title: "Filter", style: UIBarButtonItemStyle.Plain, target: self, action: "loadCategorySelectionView")
+        self.navigationItem.rightBarButtonItem = rightButton
+        
+        let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            self.loadCategorySelectionView()
+        })
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     func animateTable() {
@@ -68,7 +82,17 @@ class ViewController: UIViewController {
         }
     }
 
-
+    func loadCategorySelectionView() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("categoryStoryboard") as! CategoryViewController
+        vc.delegate = self
+        var selectedCategory : ItemCategory = .CoffeeShops
+        if let row = category  {
+            selectedCategory = row
+        }
+        vc.selectedCategory = selectedCategory
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
     func initLocationManager() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -84,7 +108,7 @@ class ViewController: UIViewController {
         let netWrkObj = Networking()
         let baseUrl = "https://api.foursquare.com/"
         let operation = "v2/venues/search?"
-        let categoryId = "4bf58dd8d48988d1e0931735"
+        let categoryId: String = self.category.stringValue(category)
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
@@ -120,15 +144,16 @@ class ViewController: UIViewController {
             let venueItem = venues[i] as? NSDictionary
             let name = venueItem!["name"] as! String
             
-            var url: String!
+            var url: String = ""
             if let websiteUrl = venueItem!["url"] {
                 url = websiteUrl as! String
-            } else {
-                url = ""
             }
             
             let location = venueItem!["location"] as! NSDictionary
-            let street = location["address"] as! String
+            var street : String = ""
+            if let st = location["address"] {
+                street = st as! String
+            }
             let city = location["city"] as! String
             let address = "\(street), \(city)"
             let distance = location["distance"] as! Float64
@@ -136,19 +161,15 @@ class ViewController: UIViewController {
             let longitude = location["lng"] as! Float64
 
             let contact = venueItem!["contact"] as! NSDictionary
-            var phoneNumber : String!
+            var phoneNumber : String = ""
             if let phone = contact["formattedPhone"] {
                 phoneNumber = phone as! String
-            } else {
-                phoneNumber = ""
             }
             
-            var menuUrl : String!
+            var menuUrl : String = ""
             if let menu = venueItem!["menu"] {
                let dict = menu as! NSDictionary
                 menuUrl = dict["url"] as! String
-            } else {
-                menuUrl = ""
             }
             
             let identifier = venueItem!["id"] as! String
@@ -156,6 +177,9 @@ class ViewController: UIViewController {
             let venueObj = Venue(_id: identifier, _name: name, _address: address, _website: url, _menuUrl:menuUrl, _phone: phoneNumber, _distance: distance, _lat: latitude, _lng: longitude, _iconUrl: "")
             self.list.append(venueObj)
         }
+        
+        // sort the list
+        self.list.sortInPlace({$0.location.distance < $1.location.distance})
     }
     
     override func didReceiveMemoryWarning() {
@@ -173,6 +197,14 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController : DismissedCategoryViewProtocol {
+    
+    func categoryViewDismissed(category  : ItemCategory) {
+        self.category = category
+        self.loadVenues()
+    }
+}
+
 
 extension ViewController : CLLocationManagerDelegate {
 
@@ -183,7 +215,6 @@ extension ViewController : CLLocationManagerDelegate {
             self.currentLocation = CLLocation()
         }
         self.currentLocation = newLocation;
-        self.loadVenues()
     }
 
 }

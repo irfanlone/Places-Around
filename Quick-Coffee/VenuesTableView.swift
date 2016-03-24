@@ -26,7 +26,7 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
         let obj = list[indexPath.row]
         cell!.configureCell(obj.name, _address: obj.location.address, _distance: obj.location.distance)
 
-        return cell!;
+        return cell!
     }
     
     // MARK: - UITableViewDelegate

@@ -71,7 +71,6 @@ class PhotosViewController: UIViewController {
             let items = photos.valueForKey("items") as! NSArray
             self.photosList = items as [AnyObject]
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                print(self.photosList.count)
                 self.dataSource.photosList = self.photosList
                 self.collectionView.reloadData()
             })
