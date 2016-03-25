@@ -45,7 +45,7 @@ struct Venue {
         self.menuUrl = ""
         self.phoneNumber = "'"
         self.iconUrl = ""
-        self.location = Location.init()
+        self.location = Location()
     }
     
     init(_id: String, _name: String, _address: String, _website: String, _menuUrl: String, _phone: String, _distance: Float64, _lat: Float64, _lng: Float64, _iconUrl: String) {

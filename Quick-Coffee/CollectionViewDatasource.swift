@@ -31,7 +31,10 @@ class AbstractCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     // MARK: - private
     
-    private func configure(cell cell: UICollectionViewCell,collectionView: UICollectionView, indexPath: NSIndexPath) {
+    private func configure(cell cell: PhotosCell, collectionView: UICollectionView, indexPath: NSIndexPath) {
+        
+        cell.imageView.image = UIImage()
+        
         let photoItem = self.photosList[indexPath.row] as! NSDictionary
         
         var prefix : String! = ""

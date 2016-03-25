@@ -199,7 +199,7 @@ class ViewController: UIViewController {
 
 extension ViewController : DismissedCategoryViewProtocol {
     
-    func categoryViewDismissed(category  : ItemCategory) {
+    func categoryViewDismissed(category: ItemCategory) {
         self.category = category
         self.loadVenues()
     }

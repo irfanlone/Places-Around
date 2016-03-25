@@ -85,7 +85,6 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    
     private func configure(cell cell: UITableViewCell, indexPath: NSIndexPath) {
         if indexPath.row == self.selectedCategory.rawValue {
             cell.accessoryType = .Checkmark
