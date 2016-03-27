@@ -14,8 +14,6 @@ class VenueTableCell: UITableViewCell {
     @IBOutlet var address: UILabel!
     @IBOutlet var distance: UILabel!
     
-    let gradientLayer = CAGradientLayer()
-
     override func awakeFromNib() {
         super.awakeFromNib()
     }

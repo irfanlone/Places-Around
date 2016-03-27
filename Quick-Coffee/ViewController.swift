@@ -20,10 +20,10 @@ class ViewController: UIViewController {
     var list : [Venue] = []
     var locationManager : CLLocationManager!
     var currentLocation : CLLocation!
-    @IBOutlet var tableView: UITableView!
     var selectedIndexPath : NSIndexPath!
     var activityIndicator : UIActivityIndicatorView!
     var category : ItemCategory!
+    var venuesTableVC : VenueTableViewController!
     
     
     override func loadView() {
@@ -61,27 +61,6 @@ class ViewController: UIViewController {
         
     }
     
-    func animateTable() {
-        
-        self.tableView.reloadData()
-        let cells = tableView.visibleCells
-        let tableHeight: CGFloat = tableView.bounds.size.height
-        
-        for i in cells {
-            let cell: UITableViewCell = i as UITableViewCell
-            cell.transform = CGAffineTransformMakeTranslation(0, tableHeight)
-        }
-        
-        var index = 0
-        for a in cells {
-            let cell: UITableViewCell = a as UITableViewCell
-            UIView.animateWithDuration(1.5, delay: 0.1 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
-                    cell.transform = CGAffineTransformMakeTranslation(0, 0);
-                }, completion: nil)
-            index += 1
-        }
-    }
-
     func loadCategorySelectionView() {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("categoryStoryboard") as! CategoryViewController
         vc.delegate = self
@@ -130,10 +109,20 @@ class ViewController: UIViewController {
             }
             self.processJsonData(parsed)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.animateTable()
                 self.activityIndicator.stopAnimating()
+                
+                // load tableview
+                self.loadTableViewController()
             })
         }
+    }
+    
+    func loadTableViewController() {
+        venuesTableVC = UIStoryboard(name: "Venues", bundle: nil).instantiateViewControllerWithIdentifier("venuesTable") as! VenueTableViewController
+        venuesTableVC.venues = self.list
+        self.addChildViewController(venuesTableVC)
+        self.view.addSubview(venuesTableVC.view)
+        venuesTableVC.didMoveToParentViewController(self)
     }
 
     func processJsonData(json: AnyObject) {
@@ -154,7 +143,10 @@ class ViewController: UIViewController {
             if let st = location["address"] {
                 street = st as! String
             }
-            let city = location["city"] as! String
+            var city : String = ""
+            if let cty = location["city"] {
+                city  = cty as! String
+            }
             let address = "\(street), \(city)"
             let distance = location["distance"] as! Float64
             let latitude = location["lat"] as! Float64
@@ -184,15 +176,6 @@ class ViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-
-    // MARK: - Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "detail" {
-            let dvc = segue.destinationViewController as! DetailViewController
-            dvc.venue = self.list[self.selectedIndexPath.row]
-        }
     }
 
 }
