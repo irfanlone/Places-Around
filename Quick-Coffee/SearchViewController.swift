@@ -8,54 +8,49 @@
 
 import UIKit
 
+
 class SearchViewController : UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var searchTextField: UITextField!
-    var tableView : UITableView!
     var list : [Venue] = []
+    var venuesTableVC : VenueTableViewController!
+    
+    @IBOutlet weak var searchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.searchTextField.delegate = self
     }
     
     @IBAction func searchPressed(sender: AnyObject) {
-        self.loadVenues()
+        let title = self.searchButton.titleLabel?.text
+        if title == "Cancel" {
+            self.test(self)
+            self.searchButton.setTitle("Search", forState: UIControlState.Normal)
+            self.searchTextField.text = ""
+        } else {
+            self.loadVenues()
+            self.searchButton.setTitle("Cancel", forState: UIControlState.Normal)
+        }
+        self.searchTextField.resignFirstResponder()
     }
     
     
     @IBAction func test(sender: AnyObject) {
-        self.tableView.removeFromSuperview()
+        self.venuesTableVC.view.removeFromSuperview()
     }
     
-    private func loadResultsTableView() {
-//        var frame = self.view.bounds
-//        frame.origin.x -= self.view.frame.size.width
-//        frame.origin.y += 80
-//        frame.size.height -= 80
-//        tableView = UITableView(frame: frame, style: UITableViewStyle.Plain)
-//        tableView.registerClass(VenueTableCell.self, forCellReuseIdentifier: "cell")
-//        tableView.dataSource = dataSource
-//        self.view.addSubview(tableView)
-//        
-//        UIView.animateWithDuration(1.5, delay: 0.1 * Double(1), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
-//            self.tableView.frame.origin.x = 0
-//
-//            }, completion: nil)
-//
-//
+    private func loadResultsTableView() {        
         
-//        let views = ["view": tableView]
-//        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]-0-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views)
-//        view.addConstraints(horizontalConstraints)
-//        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-80-[view]-0-|", options: NSLayoutFormatOptions.AlignAllCenterY, metrics: nil, views: views)
-//        view.addConstraints(verticalConstraints)
-        
-        let venuesTableVC = UIStoryboard(name: "Venues", bundle: nil).instantiateViewControllerWithIdentifier("venuesTable") as! VenueTableViewController
+        venuesTableVC = UIStoryboard(name: "Venues", bundle: nil).instantiateViewControllerWithIdentifier("venuesTable") as! VenueTableViewController
         venuesTableVC.venues = self.list
+        var frame = self.view.bounds
+        frame.origin.y += 100
+        venuesTableVC.view.frame = frame
         self.addChildViewController(venuesTableVC)
         self.view.addSubview(venuesTableVC.view)
-        venuesTableVC.didMoveToParentViewController(self)
-
+        
     }
     
     func loadVenues() {
@@ -142,13 +137,24 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
         self.list.sortInPlace({$0.location.distance < $1.location.distance})
     }
 
+    // MARK: - UITextFieldDelegate
     
     @IBAction func editingChanged(sender: AnyObject) {
+        if searchTextField.text?.utf16.count  < 1  {
+            self.test(self)
+        }
     }
     
-    // MARK: - UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        self.searchButton.setTitle("Search", forState: UIControlState.Normal)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.searchButton.setTitle("Cancel", forState: UIControlState.Normal)
     }
     
 }

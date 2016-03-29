@@ -12,12 +12,12 @@ class VenueTableViewController : UIViewController {
     
     var venues : [Venue] = []
     var selectedIndexPath : NSIndexPath!
-    var dataSource : AbstractVenuesDataSource!
+    var dataSource : VenuesTableViewDataSource!
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dataSource = AbstractVenuesDataSource()
+        self.dataSource = VenuesTableViewDataSource()
         self.dataSource.venues = venues
         self.tableView.dataSource = self.dataSource
         self.animateTable()

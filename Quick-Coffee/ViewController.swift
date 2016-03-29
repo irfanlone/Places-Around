@@ -123,6 +123,13 @@ class ViewController: UIViewController {
         self.addChildViewController(venuesTableVC)
         self.view.addSubview(venuesTableVC.view)
         venuesTableVC.didMoveToParentViewController(self)
+        
+        let views = ["view": venuesTableVC.view]
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]-0-|", options:NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
+        view.addConstraints(horizontalConstraints)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+        view.addConstraints(verticalConstraints)
+
     }
 
     func processJsonData(json: AnyObject) {

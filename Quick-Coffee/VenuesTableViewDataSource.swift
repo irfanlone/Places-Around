@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AbstractVenuesDataSource : NSObject, UITableViewDataSource {
+class VenuesTableViewDataSource : NSObject, UITableViewDataSource {
     
     var venues : [Venue] = []
     
