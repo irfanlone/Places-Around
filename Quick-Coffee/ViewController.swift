@@ -18,7 +18,6 @@ import CoreLocation
 class ViewController: UIViewController {
 
     var list : [Venue] = []
-    var locationManager : CLLocationManager!
     var currentLocation : CLLocation!
     var selectedIndexPath : NSIndexPath!
     var activityIndicator : UIActivityIndicatorView!
@@ -43,8 +42,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.initLocationManager()
-        
+        let userLoc = UserLocationManager.SharedManager
+        userLoc.delegate = self
+        self.currentLocation = userLoc.currentLocation
         self.title = "Places"
         let rightButton : UIBarButtonItem = UIBarButtonItem(title: "Filter", style: UIBarButtonItemStyle.Plain, target: self, action: "loadCategorySelectionView")
         self.navigationItem.rightBarButtonItem = rightButton
@@ -71,16 +71,7 @@ class ViewController: UIViewController {
         vc.selectedCategory = selectedCategory
         self.presentViewController(vc, animated: true, completion: nil)
     }
-    
-    func initLocationManager() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.distanceFilter = kCLLocationAccuracyHundredMeters
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
-    }
-    
+        
     func loadVenues() {
         self.list.removeAll()
 
@@ -132,10 +123,14 @@ class ViewController: UIViewController {
 
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 
+}
+
+extension ViewController : LocationUpdateProtocol {
+    
+    func locationDidUpdateToLocation(location: CLLocation) {
+        self.currentLocation = location
+    }
 }
 
 extension ViewController : DismissedCategoryViewProtocol {
@@ -146,17 +141,4 @@ extension ViewController : DismissedCategoryViewProtocol {
     }
 }
 
-
-extension ViewController : CLLocationManagerDelegate {
-
-    // MARK: - Location Manager
-    
-    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-        if (self.currentLocation == nil) {
-            self.currentLocation = CLLocation()
-        }
-        self.currentLocation = newLocation;
-    }
-
-}
 

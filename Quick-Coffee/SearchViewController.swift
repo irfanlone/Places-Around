@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 
 class SearchViewController : UIViewController, UITextFieldDelegate {
@@ -14,13 +15,18 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
     @IBOutlet weak var searchTextField: UITextField!
     var list : [Venue] = []
     var venuesTableVC : VenueTableViewController!
-    
+    var currentLocation : CLLocation!
+
     @IBOutlet weak var searchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.searchTextField.delegate = self
+        let userLoc = UserLocationManager.SharedManager
+        userLoc.delegate = self
+        self.currentLocation = userLoc.currentLocation
+
     }
     
     @IBAction func searchPressed(sender: AnyObject) {
@@ -38,7 +44,9 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
     
     
     @IBAction func test(sender: AnyObject) {
-        self.venuesTableVC.view.removeFromSuperview()
+        if let vc = self.venuesTableVC {
+            vc.view.removeFromSuperview()
+        }
     }
     
     private func loadResultsTableView() {        
@@ -64,10 +72,7 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
         dateFormatter.dateFormat = "yyyyMMdd"
         let dateStr = dateFormatter.stringFromDate(NSDate())
         
-        let latitude = 37.3903825
-        let longitude = -122.0553348
-        
-        let urlString = NSString(format: "%@%@query=%@&client_id=%@&client_secret=%@&ll=%f%%2C%f&v=%@", baseUrl,operation,searchTerm,kCLIENTID,kCLIENTSECRET,latitude,longitude ,dateStr)
+        let urlString = NSString(format: "%@%@query=%@&client_id=%@&client_secret=%@&ll=%f%%2C%f&v=%@", baseUrl,operation,searchTerm,kCLIENTID,kCLIENTSECRET,self.currentLocation.coordinate.latitude,self.currentLocation.coordinate.longitude ,dateStr)
         
         let url = NSURL(string: urlString as String)
         netWrkObj.getDataAtUrl(url!) { (success, obj) -> (Void) in
@@ -109,3 +114,11 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
     }
     
 }
+
+extension SearchViewController : LocationUpdateProtocol {
+    
+    func locationDidUpdateToLocation(location: CLLocation) {
+        self.currentLocation = location
+    }
+}
+
