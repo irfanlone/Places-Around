@@ -54,22 +54,6 @@ class VenueTableViewController : UIViewController {
             index += 1
         }
     }
-}
-
-
-extension VenueTableViewController :  UITableViewDelegate {
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
-    }
-    
-    // MARK: - UITableViewDelegate
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.selectedIndexPath = indexPath;
-        self .performSegueWithIdentifier("detail", sender: self)
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
     
     // MARK: - Navigation
     
@@ -79,5 +63,24 @@ extension VenueTableViewController :  UITableViewDelegate {
             dvc.venue = venues[self.selectedIndexPath.row]
         }
     }
+
+    
+}
+
+
+extension VenueTableViewController :  UITableViewDelegate {
+    
+    // MARK: - UITableViewDelegate
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedIndexPath = indexPath;
+        self .performSegueWithIdentifier("detail", sender: self)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     
 }

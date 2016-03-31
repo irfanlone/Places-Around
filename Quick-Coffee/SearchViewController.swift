@@ -16,18 +16,30 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
     var list : [Venue] = []
     var venuesTableVC : VenueTableViewController!
     var currentLocation : CLLocation!
-
+    var tapGR : UITapGestureRecognizer!
     @IBOutlet weak var searchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.searchTextField.delegate = self
         let userLoc = UserLocationManager.SharedManager
         userLoc.delegate = self
         self.currentLocation = userLoc.currentLocation
-        let tap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.handleTap(_:)))
-        self.view.addGestureRecognizer(tap)
+        tapGR = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.handleTap(_:)))
+        self.view.addGestureRecognizer(tapGR)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBarHidden = true
+        super.viewWillAppear(animated)
+    }
+    
+    
+    override func viewWillDisappear(animated: Bool) {
+        if (navigationController?.topViewController != self) {
+            navigationController?.navigationBarHidden = false
+        }
+        super.viewWillDisappear(animated)
     }
     
     func handleTap(sender: AnyObject) {
@@ -75,9 +87,14 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
         if let vc = self.venuesTableVC {
             vc.view.removeFromSuperview()
         }
+        // add back tap GR
+        self.view.addGestureRecognizer(tapGR)
     }
     
     private func loadResultsTableView() {        
+        
+        // remove Tap GR first.
+        self.view.removeGestureRecognizer(tapGR)
         
         venuesTableVC = UIStoryboard(name: "Venues", bundle: nil).instantiateViewControllerWithIdentifier("venuesTable") as! VenueTableViewController
         venuesTableVC.venues = self.list
@@ -86,7 +103,7 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
         venuesTableVC.view.frame = frame
         self.addChildViewController(venuesTableVC)
         self.view.addSubview(venuesTableVC.view)
-        
+        venuesTableVC.didMoveToParentViewController(self)
     }
     
     func loadVenues() {
