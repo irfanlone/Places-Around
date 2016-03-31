@@ -44,7 +44,6 @@ class ViewController: UIViewController {
         
         let userLoc = UserLocationManager.SharedManager
         userLoc.delegate = self
-        self.currentLocation = userLoc.currentLocation
         self.title = "Places"
         let rightButton : UIBarButtonItem = UIBarButtonItem(title: "Filter", style: UIBarButtonItemStyle.Plain, target: self, action: "loadCategorySelectionView")
         self.navigationItem.rightBarButtonItem = rightButton
