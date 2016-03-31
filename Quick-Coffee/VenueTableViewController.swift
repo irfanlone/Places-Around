@@ -42,13 +42,13 @@ class VenueTableViewController : UIViewController {
             } else {
                 cell.transform = CGAffineTransformMakeTranslation(tableWidth, 0)
             }
-            indx++
+            indx += 1
         }
         
         var index = 0
         for a in cells {
             let cell: UITableViewCell = a as UITableViewCell
-            UIView.animateWithDuration(2.5, delay: 0.1 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+            UIView.animateWithDuration(1.5, delay: 0.1 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
                 cell.transform = CGAffineTransformMakeTranslation(0, 0);
                 }, completion: nil)
             index += 1

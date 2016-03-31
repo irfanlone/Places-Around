@@ -26,10 +26,18 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
         let userLoc = UserLocationManager.SharedManager
         userLoc.delegate = self
         self.currentLocation = userLoc.currentLocation
-
+        let tap = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.handleTap(_:)))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    func handleTap(sender: AnyObject) {
+        self.searchTextField.resignFirstResponder()
     }
     
     @IBAction func searchPressed(sender: AnyObject) {
+        guard self.searchTextField.text != "" else {
+            return
+        }
         let title = self.searchButton.titleLabel?.text
         if title == "Cancel" {
             self.test(self)
@@ -42,6 +50,26 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
         self.searchTextField.resignFirstResponder()
     }
     
+    @IBAction func quickSearchButtonPressed(sender: AnyObject) {
+        let button = sender as! UIButton
+        var searchTerm : String!
+        switch button.tag {
+        case 1: searchTerm = "food"
+        case 2: searchTerm = "coffee"
+        case 3: searchTerm = "drinks"
+        case 4: searchTerm = "ice cream"
+        case 5: searchTerm = "chocolate"
+        case 6: searchTerm = "bar"
+        case 7: searchTerm = "bagel"
+        case 8: searchTerm = "pan cakes"
+        case 9: searchTerm = "park"
+
+        default:
+            break
+        }
+        self.searchTextField.text = searchTerm
+        self.searchPressed(self)
+    }
     
     @IBAction func test(sender: AnyObject) {
         if let vc = self.venuesTableVC {
@@ -54,7 +82,7 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
         venuesTableVC = UIStoryboard(name: "Venues", bundle: nil).instantiateViewControllerWithIdentifier("venuesTable") as! VenueTableViewController
         venuesTableVC.venues = self.list
         var frame = self.view.bounds
-        frame.origin.y += 100
+        frame.origin.y += 75
         venuesTableVC.view.frame = frame
         self.addChildViewController(venuesTableVC)
         self.view.addSubview(venuesTableVC.view)
@@ -67,13 +95,14 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
         let netWrkObj = Networking()
         let baseUrl = "https://api.foursquare.com/"
         let operation = "v2/venues/search?"
-        let searchTerm = self.searchTextField.text! as String
+        var searchTerm = self.searchTextField.text! as String
+        searchTerm = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "+")
+
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
         let dateStr = dateFormatter.stringFromDate(NSDate())
         
         let urlString = NSString(format: "%@%@query=%@&client_id=%@&client_secret=%@&ll=%f%%2C%f&v=%@", baseUrl,operation,searchTerm,kCLIENTID,kCLIENTSECRET,self.currentLocation.coordinate.latitude,self.currentLocation.coordinate.longitude ,dateStr)
-        
         let url = NSURL(string: urlString as String)
         netWrkObj.getDataAtUrl(url!) { (success, obj) -> (Void) in
             guard success == true else {
@@ -102,6 +131,7 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.searchPressed(self)
         return true
     }
     

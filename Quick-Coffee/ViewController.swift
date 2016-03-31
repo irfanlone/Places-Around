@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     var category : ItemCategory!
     var venuesTableVC : VenueTableViewController!
     
+    @IBOutlet weak var container: UIView!
     
     override func loadView() {
         super.loadView()
@@ -42,10 +43,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.hidesBarsOnSwipe = true
+        
         let userLoc = UserLocationManager.SharedManager
         userLoc.delegate = self
         self.title = "Places"
-        let rightButton : UIBarButtonItem = UIBarButtonItem(title: "Filter", style: UIBarButtonItemStyle.Plain, target: self, action: "loadCategorySelectionView")
+        let rightButton : UIBarButtonItem = UIBarButtonItem(title: "Filter", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ViewController.loadCategorySelectionView))
         self.navigationItem.rightBarButtonItem = rightButton
         
         let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
@@ -57,7 +60,6 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     func loadCategorySelectionView() {
@@ -111,14 +113,15 @@ class ViewController: UIViewController {
         venuesTableVC = UIStoryboard(name: "Venues", bundle: nil).instantiateViewControllerWithIdentifier("venuesTable") as! VenueTableViewController
         venuesTableVC.venues = self.list
         self.addChildViewController(venuesTableVC)
-        self.view.addSubview(venuesTableVC.view)
+        self.container.addSubview(venuesTableVC.view)
         venuesTableVC.didMoveToParentViewController(self)
+//        let views = ["view": venuesTableVC.view]
         
-        let views = ["view": venuesTableVC.view]
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]-0-|", options:NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
-        view.addConstraints(horizontalConstraints)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
-        view.addConstraints(verticalConstraints)
+        
+//        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]-0-|", options:NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
+//        view.addConstraints(horizontalConstraints)
+//        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+//        view.addConstraints(verticalConstraints)
 
     }
     

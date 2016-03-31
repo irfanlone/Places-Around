@@ -28,6 +28,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         self.dataSource = AbstractCollectionViewDataSource()
         self.collectionView.dataSource = dataSource
         
