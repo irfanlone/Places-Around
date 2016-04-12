@@ -14,6 +14,9 @@
 		172CD8281C9E2CF20053E955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 172CD8271C9E2CF20053E955 /* Assets.xcassets */; };
 		172CD82B1C9E2CF20053E955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 172CD8291C9E2CF20053E955 /* LaunchScreen.storyboard */; };
 		174E76D21CBCEDD900CB5186 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E76D11CBCEDD900CB5186 /* Helper.swift */; };
+		174E76DA1CBCF78C00CB5186 /* Quick_CoffeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E76D91CBCF78C00CB5186 /* Quick_CoffeeTests.swift */; };
+		174E76E41CBCF88000CB5186 /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E76E31CBCF88000CB5186 /* NetworkingTests.swift */; };
+		174E76F11CBCFEF100CB5186 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722749F1C9F3B0200C1A59D /* Networking.swift */; };
 		1753B37F1CA5B5F7009F9423 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1753B37E1CA5B5F7009F9423 /* SearchViewController.swift */; };
 		176FA87D1CA6078300BF9841 /* VenuesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176FA87C1CA6078300BF9841 /* VenuesTableViewDataSource.swift */; };
 		177DFF121CA40EF100673B20 /* CollectionViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177DFF111CA40EF100673B20 /* CollectionViewDatasource.swift */; };
@@ -31,6 +34,16 @@
 		17E871A11C9FFAA5006D5926 /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E871A01C9FFAA5006D5926 /* PhotosCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		174E76DC1CBCF78C00CB5186 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 172CD8151C9E2CF20053E955 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 172CD81C1C9E2CF20053E955;
+			remoteInfo = "Quick-Coffee";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1722749F1C9F3B0200C1A59D /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		172CD81D1C9E2CF20053E955 /* Quick-Coffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quick-Coffee.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +54,10 @@
 		172CD82A1C9E2CF20053E955 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		172CD82C1C9E2CF20053E955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		174E76D11CBCEDD900CB5186 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		174E76D71CBCF78C00CB5186 /* Quick-CoffeeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Quick-CoffeeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		174E76D91CBCF78C00CB5186 /* Quick_CoffeeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quick_CoffeeTests.swift; sourceTree = "<group>"; };
+		174E76DB1CBCF78C00CB5186 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		174E76E31CBCF88000CB5186 /* NetworkingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		1753B37E1CA5B5F7009F9423 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		176FA87C1CA6078300BF9841 /* VenuesTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuesTableViewDataSource.swift; sourceTree = "<group>"; };
 		177DFF111CA40EF100673B20 /* CollectionViewDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDatasource.swift; sourceTree = "<group>"; };
@@ -66,6 +83,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		174E76D41CBCF78C00CB5186 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -73,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				172CD81F1C9E2CF20053E955 /* Quick-Coffee */,
+				174E76D81CBCF78C00CB5186 /* Quick-CoffeeTests */,
 				172CD81E1C9E2CF20053E955 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				172CD81D1C9E2CF20053E955 /* Quick-Coffee.app */,
+				174E76D71CBCF78C00CB5186 /* Quick-CoffeeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,6 +141,16 @@
 			path = "Quick-Coffee";
 			sourceTree = "<group>";
 		};
+		174E76D81CBCF78C00CB5186 /* Quick-CoffeeTests */ = {
+			isa = PBXGroup;
+			children = (
+				174E76D91CBCF78C00CB5186 /* Quick_CoffeeTests.swift */,
+				174E76DB1CBCF78C00CB5186 /* Info.plist */,
+				174E76E31CBCF88000CB5186 /* NetworkingTests.swift */,
+			);
+			path = "Quick-CoffeeTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,19 +171,42 @@
 			productReference = 172CD81D1C9E2CF20053E955 /* Quick-Coffee.app */;
 			productType = "com.apple.product-type.application";
 		};
+		174E76D61CBCF78C00CB5186 /* Quick-CoffeeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 174E76DE1CBCF78C00CB5186 /* Build configuration list for PBXNativeTarget "Quick-CoffeeTests" */;
+			buildPhases = (
+				174E76D31CBCF78C00CB5186 /* Sources */,
+				174E76D41CBCF78C00CB5186 /* Frameworks */,
+				174E76D51CBCF78C00CB5186 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				174E76DD1CBCF78C00CB5186 /* PBXTargetDependency */,
+			);
+			name = "Quick-CoffeeTests";
+			productName = "Quick-CoffeeTests";
+			productReference = 174E76D71CBCF78C00CB5186 /* Quick-CoffeeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		172CD8151C9E2CF20053E955 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Ilone Labs";
 				TargetAttributes = {
 					172CD81C1C9E2CF20053E955 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = RGST57P8UR;
+					};
+					174E76D61CBCF78C00CB5186 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = RGST57P8UR;
+						TestTargetID = 172CD81C1C9E2CF20053E955;
 					};
 				};
 			};
@@ -165,6 +224,7 @@
 			projectRoot = "";
 			targets = (
 				172CD81C1C9E2CF20053E955 /* Quick-Coffee */,
+				174E76D61CBCF78C00CB5186 /* Quick-CoffeeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -178,6 +238,13 @@
 				172CD8281C9E2CF20053E955 /* Assets.xcassets in Resources */,
 				17D0AA541CA77946004FAF8C /* Venues.storyboard in Resources */,
 				172CD8261C9E2CF20053E955 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		174E76D51CBCF78C00CB5186 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +276,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		174E76D31CBCF78C00CB5186 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				174E76F11CBCFEF100CB5186 /* Networking.swift in Sources */,
+				174E76DA1CBCF78C00CB5186 /* Quick_CoffeeTests.swift in Sources */,
+				174E76E41CBCF88000CB5186 /* NetworkingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		174E76DD1CBCF78C00CB5186 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 172CD81C1C9E2CF20053E955 /* Quick-Coffee */;
+			targetProxy = 174E76DC1CBCF78C00CB5186 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		172CD8241C9E2CF20053E955 /* Main.storyboard */ = {
@@ -334,6 +419,34 @@
 			};
 			name = Release;
 		};
+		174E76DF1CBCF78C00CB5186 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = "Quick-CoffeeTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.irfanprograms.Quick-CoffeeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Quick-Coffee.app/Quick-Coffee";
+			};
+			name = Debug;
+		};
+		174E76E01CBCF78C00CB5186 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = "Quick-CoffeeTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.irfanprograms.Quick-CoffeeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Quick-Coffee.app/Quick-Coffee";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -354,6 +467,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		174E76DE1CBCF78C00CB5186 /* Build configuration list for PBXNativeTarget "Quick-CoffeeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				174E76DF1CBCF78C00CB5186 /* Debug */,
+				174E76E01CBCF78C00CB5186 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
