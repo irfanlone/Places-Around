@@ -107,35 +107,14 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
     }
     
     func loadVenues() {
+        
         self.list.removeAll()
         
-        let baseUrl = "https://api.foursquare.com/"
-        let operation = "v2/venues/search?"
-        var searchTerm = self.searchTextField.text! as String
-        searchTerm = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "+")
-
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
-        let dateStr = dateFormatter.stringFromDate(NSDate())
-        
-        let urlString = NSString(format: "%@%@query=%@&client_id=%@&client_secret=%@&ll=%f%%2C%f&v=%@", baseUrl,operation,searchTerm,kCLIENTID,kCLIENTSECRET,self.currentLocation.coordinate.latitude,self.currentLocation.coordinate.longitude ,dateStr)
-        let url = NSURL(string: urlString as String)
-        Networking().getDataAtUrl(url!) { (success, obj) -> (Void) in
-            guard success == true else {
-                return;
-            }
-            var parsed : AnyObject!
-            do {
-                parsed = try NSJSONSerialization.JSONObjectWithData(obj.data, options: NSJSONReadingOptions.AllowFragments)
-            }
-            catch let error as NSError {
-                print("A JSON parsing error occurred, details:\n \(error)")
-            }
-            self.list = Venue.processJsonDataToVenues(parsed)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.loadResultsTableView()
-            })
+        venuesController().getVenuesForSearchString(self.searchTextField.text! as String, location: self.currentLocation) { venues -> (Void) in
+            self.list = venues
+            self.loadResultsTableView()
         }
+        
     }
     
     // MARK: - UITextFieldDelegate

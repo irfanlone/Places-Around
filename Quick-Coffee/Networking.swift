@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol NetworkProtocol {
+    
+    func getDataAtUrl(url: NSURL, completion:(Bool, NetworkResponseObj) -> (Void))
+    
+}
 
 struct NetworkResponseObj {
     
@@ -28,13 +33,6 @@ struct NetworkResponseObj {
     }
 }
 
-
-
-protocol NetworkProtocol {
-    
-    func getDataAtUrl(url: NSURL, completion:(Bool, NetworkResponseObj) -> (Void))
-
-}
 
 struct Networking : NetworkProtocol {
     

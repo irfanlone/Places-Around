@@ -111,9 +111,9 @@ class DetailViewController: UIViewController {
     
     // Mark:- private
 
-    private func loadPhotos() {
+    private func loadPhotos(downloader: DownloadPhotos = DownloadPhotos()) {
 
-        DownloadPhotos().getPhotoForVenue(venue.identifier) { (photosList) -> (Void) in
+        downloader.getPhotoForVenue(venue.identifier) { (photosList) -> (Void) in
             self.photosList = photosList
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.dataSource.photosList = self.photosList

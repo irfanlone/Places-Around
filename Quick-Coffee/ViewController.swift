@@ -48,6 +48,7 @@ class ViewController: UIViewController {
         let userLoc = UserLocationManager.SharedManager
         userLoc.delegate = self
         self.title = "Places"
+        
         let rightButton : UIBarButtonItem = UIBarButtonItem(title: "Filter", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ViewController.loadCategorySelectionView))
         self.navigationItem.rightBarButtonItem = rightButton
         
@@ -72,41 +73,6 @@ class ViewController: UIViewController {
         vc.selectedCategory = selectedCategory
         self.presentViewController(vc, animated: true, completion: nil)
     }
-        
-    func loadVenues() {
-        self.list.removeAll()
-
-        let baseUrl = "https://api.foursquare.com/"
-        let operation = "v2/venues/search?"
-        let categoryId: String = self.category.stringValue(category)
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
-        let dateStr = dateFormatter.stringFromDate(NSDate())
-        
-        let urlString = NSString(format: "%@%@categoryId=%@&client_id=%@&client_secret=%@&ll=%f%%2C%f&v=%@", baseUrl,operation,categoryId,kCLIENTID,kCLIENTSECRET,self.currentLocation.coordinate.latitude,self.currentLocation.coordinate.longitude ,dateStr)
-        
-        let url = NSURL(string: urlString as String)
-        Networking().getDataAtUrl(url!) { (success, obj) -> (Void) in
-            guard success == true else {
-                return;
-            }
-            var parsed : AnyObject!
-            do {
-                parsed = try NSJSONSerialization.JSONObjectWithData(obj.data, options: NSJSONReadingOptions.AllowFragments)
-            }
-            catch let error as NSError {
-                print("A JSON parsing error occurred, here are the details:\n \(error)")
-            }
-            self.list = Venue.processJsonDataToVenues(parsed)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.activityIndicator.stopAnimating()
-                
-                // load tableview
-                self.loadTableViewController()
-            })
-        }
-    }
     
     func loadTableViewController() {
         venuesTableVC = UIStoryboard(name: "Venues", bundle: nil).instantiateViewControllerWithIdentifier("venuesTable") as! VenueTableViewController
@@ -114,6 +80,17 @@ class ViewController: UIViewController {
         self.addChildViewController(venuesTableVC)
         self.container.addSubview(venuesTableVC.view)
         venuesTableVC.didMoveToParentViewController(self)
+    }
+    
+    func loadVenues() {
+        
+        self.list.removeAll()
+        
+        venuesController().getVenuesForCategory(self.category, location: self.currentLocation) { venues -> (Void) in
+            self.list = venues
+            self.activityIndicator.stopAnimating()
+            self.loadTableViewController()
+        }
     }
     
 

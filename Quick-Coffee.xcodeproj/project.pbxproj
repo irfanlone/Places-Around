@@ -17,6 +17,8 @@
 		174E76DA1CBCF78C00CB5186 /* Quick_CoffeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E76D91CBCF78C00CB5186 /* Quick_CoffeeTests.swift */; };
 		174E76E41CBCF88000CB5186 /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E76E31CBCF88000CB5186 /* NetworkingTests.swift */; };
 		174E76F11CBCFEF100CB5186 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722749F1C9F3B0200C1A59D /* Networking.swift */; };
+		174E76F51CBD103C00CB5186 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E76F41CBD103C00CB5186 /* Helper.swift */; };
+		174E76F71CBD154600CB5186 /* VenuesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E76F61CBD154600CB5186 /* VenuesController.swift */; };
 		1753B37F1CA5B5F7009F9423 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1753B37E1CA5B5F7009F9423 /* SearchViewController.swift */; };
 		176FA87D1CA6078300BF9841 /* VenuesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176FA87C1CA6078300BF9841 /* VenuesTableViewDataSource.swift */; };
 		177DFF121CA40EF100673B20 /* CollectionViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177DFF111CA40EF100673B20 /* CollectionViewDatasource.swift */; };
@@ -58,6 +60,8 @@
 		174E76D91CBCF78C00CB5186 /* Quick_CoffeeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quick_CoffeeTests.swift; sourceTree = "<group>"; };
 		174E76DB1CBCF78C00CB5186 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		174E76E31CBCF88000CB5186 /* NetworkingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
+		174E76F41CBD103C00CB5186 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		174E76F61CBD154600CB5186 /* VenuesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuesController.swift; sourceTree = "<group>"; };
 		1753B37E1CA5B5F7009F9423 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		176FA87C1CA6078300BF9841 /* VenuesTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuesTableViewDataSource.swift; sourceTree = "<group>"; };
 		177DFF111CA40EF100673B20 /* CollectionViewDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDatasource.swift; sourceTree = "<group>"; };
@@ -132,11 +136,13 @@
 				17D0AA551CAC4228004FAF8C /* UserLocationManager.swift */,
 				1722749F1C9F3B0200C1A59D /* Networking.swift */,
 				174E76D11CBCEDD900CB5186 /* DownloadPhotos.swift */,
+				174E76F61CBD154600CB5186 /* VenuesController.swift */,
 				172CD8241C9E2CF20053E955 /* Main.storyboard */,
 				17D0AA531CA77946004FAF8C /* Venues.storyboard */,
 				172CD8271C9E2CF20053E955 /* Assets.xcassets */,
 				172CD8291C9E2CF20053E955 /* LaunchScreen.storyboard */,
 				172CD82C1C9E2CF20053E955 /* Info.plist */,
+				174E76F41CBD103C00CB5186 /* Helper.swift */,
 			);
 			path = "Quick-Coffee";
 			sourceTree = "<group>";
@@ -263,6 +269,7 @@
 				174E76D21CBCEDD900CB5186 /* DownloadPhotos.swift in Sources */,
 				177DFF161CA4336600673B20 /* CategoryViewController.swift in Sources */,
 				17E871A11C9FFAA5006D5926 /* PhotosCell.swift in Sources */,
+				174E76F51CBD103C00CB5186 /* Helper.swift in Sources */,
 				17E8719F1C9FE553006D5926 /* MapView.swift in Sources */,
 				177DFF121CA40EF100673B20 /* CollectionViewDatasource.swift in Sources */,
 				172274A01C9F3B0200C1A59D /* Networking.swift in Sources */,
@@ -273,6 +280,7 @@
 				17E8719D1C9FC6AC006D5926 /* DetailViewController.swift in Sources */,
 				172CD8211C9E2CF20053E955 /* AppDelegate.swift in Sources */,
 				17E8719B1C9F8D85006D5926 /* VenueTableCell.swift in Sources */,
+				174E76F71CBD154600CB5186 /* VenuesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

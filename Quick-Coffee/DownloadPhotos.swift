@@ -10,17 +10,18 @@ import Foundation
 
 protocol PhotosGettable {
     
-    func getPhotoForVenue(venueId: String ,completion:([AnyObject]) -> (Void))
+    func getPhotoForVenue(venueId: String, ntwrkng: Networking, completion:([AnyObject]) -> (Void))
 
 }
 
 
 struct DownloadPhotos : PhotosGettable {
     
-    func getPhotoForVenue(venueId: String ,completion:([AnyObject]) -> (Void)) {
+    let baseUrl = "https://api.foursquare.com/v2/venues/"
+    let operation = "/photos?"
+
+    func getPhotoForVenue(venueId: String, ntwrkng : Networking = Networking() ,completion:([AnyObject]) -> (Void)) {
         
-        let baseUrl = "https://api.foursquare.com/v2/venues/"
-        let operation = "/photos?"
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
         let dateStr = dateFormatter.stringFromDate(NSDate())
@@ -28,7 +29,7 @@ struct DownloadPhotos : PhotosGettable {
         let urlString = NSString(format: "%@%@%@&client_id=%@&client_secret=%@&v=%@&limit=200", baseUrl,venueId,operation,kCLIENTID,kCLIENTSECRET,dateStr)
         
         let url = NSURL(string: urlString as String)
-        Networking().getDataAtUrl(url!) { (success, obj) -> (Void) in
+        ntwrkng.getDataAtUrl(url!) { (success, obj) -> (Void) in
             if success == false {
                 completion([])
                 return

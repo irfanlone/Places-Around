@@ -26,9 +26,9 @@ enum ItemCategory : Int {
     case NightLife = 10
     
     
-    func stringValue(item: ItemCategory) -> String {
+    func stringValue() -> String {
         var output: String!
-        switch item {
+        switch self {
             case .CoffeeShops: output = "4bf58dd8d48988d1e0931735"
             case .Bakery: output = "4bf58dd8d48988d16a941735"
             case .Desert: output = "4bf58dd8d48988d1d0941735"
