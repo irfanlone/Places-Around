@@ -44,7 +44,7 @@ class PhotosViewController: UIViewController {
 
     private func loadPhotos() {
         
-        getPhotoForVenue(venue.identifier) { (photosList) -> (Void) in
+        DownloadPhotos().getPhotoForVenue(venue.identifier) { (photosList) -> (Void) in
             self.photosList = photosList
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.dataSource.photosList = self.photosList

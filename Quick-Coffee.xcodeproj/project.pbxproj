@@ -13,7 +13,7 @@
 		172CD8261C9E2CF20053E955 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 172CD8241C9E2CF20053E955 /* Main.storyboard */; };
 		172CD8281C9E2CF20053E955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 172CD8271C9E2CF20053E955 /* Assets.xcassets */; };
 		172CD82B1C9E2CF20053E955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 172CD8291C9E2CF20053E955 /* LaunchScreen.storyboard */; };
-		174E76D21CBCEDD900CB5186 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E76D11CBCEDD900CB5186 /* Helper.swift */; };
+		174E76D21CBCEDD900CB5186 /* DownloadPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E76D11CBCEDD900CB5186 /* DownloadPhotos.swift */; };
 		174E76DA1CBCF78C00CB5186 /* Quick_CoffeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E76D91CBCF78C00CB5186 /* Quick_CoffeeTests.swift */; };
 		174E76E41CBCF88000CB5186 /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E76E31CBCF88000CB5186 /* NetworkingTests.swift */; };
 		174E76F11CBCFEF100CB5186 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722749F1C9F3B0200C1A59D /* Networking.swift */; };
@@ -53,7 +53,7 @@
 		172CD8271C9E2CF20053E955 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		172CD82A1C9E2CF20053E955 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		172CD82C1C9E2CF20053E955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		174E76D11CBCEDD900CB5186 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		174E76D11CBCEDD900CB5186 /* DownloadPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadPhotos.swift; sourceTree = "<group>"; };
 		174E76D71CBCF78C00CB5186 /* Quick-CoffeeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Quick-CoffeeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		174E76D91CBCF78C00CB5186 /* Quick_CoffeeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quick_CoffeeTests.swift; sourceTree = "<group>"; };
 		174E76DB1CBCF78C00CB5186 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,12 +131,12 @@
 				177DFF111CA40EF100673B20 /* CollectionViewDatasource.swift */,
 				17D0AA551CAC4228004FAF8C /* UserLocationManager.swift */,
 				1722749F1C9F3B0200C1A59D /* Networking.swift */,
+				174E76D11CBCEDD900CB5186 /* DownloadPhotos.swift */,
 				172CD8241C9E2CF20053E955 /* Main.storyboard */,
 				17D0AA531CA77946004FAF8C /* Venues.storyboard */,
 				172CD8271C9E2CF20053E955 /* Assets.xcassets */,
 				172CD8291C9E2CF20053E955 /* LaunchScreen.storyboard */,
 				172CD82C1C9E2CF20053E955 /* Info.plist */,
-				174E76D11CBCEDD900CB5186 /* Helper.swift */,
 			);
 			path = "Quick-Coffee";
 			sourceTree = "<group>";
@@ -260,7 +260,7 @@
 				176FA87D1CA6078300BF9841 /* VenuesTableViewDataSource.swift in Sources */,
 				17D0AA511CA76C2E004FAF8C /* VenueTableViewController.swift in Sources */,
 				17B3CBEF1CA135C9002A5790 /* PhotosPageViewController.swift in Sources */,
-				174E76D21CBCEDD900CB5186 /* Helper.swift in Sources */,
+				174E76D21CBCEDD900CB5186 /* DownloadPhotos.swift in Sources */,
 				177DFF161CA4336600673B20 /* CategoryViewController.swift in Sources */,
 				17E871A11C9FFAA5006D5926 /* PhotosCell.swift in Sources */,
 				17E8719F1C9FE553006D5926 /* MapView.swift in Sources */,

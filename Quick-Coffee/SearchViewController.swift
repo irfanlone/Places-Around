@@ -129,7 +129,7 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
                 parsed = try NSJSONSerialization.JSONObjectWithData(obj.data, options: NSJSONReadingOptions.AllowFragments)
             }
             catch let error as NSError {
-                print("A JSON parsing error occurred, here are the details:\n \(error)")
+                print("A JSON parsing error occurred, details:\n \(error)")
             }
             self.list = Venue.processJsonDataToVenues(parsed)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
