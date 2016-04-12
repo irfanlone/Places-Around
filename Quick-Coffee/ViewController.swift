@@ -76,7 +76,6 @@ class ViewController: UIViewController {
     func loadVenues() {
         self.list.removeAll()
 
-        let netWrkObj = Networking()
         let baseUrl = "https://api.foursquare.com/"
         let operation = "v2/venues/search?"
         let categoryId: String = self.category.stringValue(category)
@@ -88,7 +87,7 @@ class ViewController: UIViewController {
         let urlString = NSString(format: "%@%@categoryId=%@&client_id=%@&client_secret=%@&ll=%f%%2C%f&v=%@", baseUrl,operation,categoryId,kCLIENTID,kCLIENTSECRET,self.currentLocation.coordinate.latitude,self.currentLocation.coordinate.longitude ,dateStr)
         
         let url = NSURL(string: urlString as String)
-        netWrkObj.getDataAtUrl(url!) { (success, obj) -> (Void) in
+        Networking().getDataAtUrl(url!) { (success, obj) -> (Void) in
             guard success == true else {
                 return;
             }
@@ -115,14 +114,6 @@ class ViewController: UIViewController {
         self.addChildViewController(venuesTableVC)
         self.container.addSubview(venuesTableVC.view)
         venuesTableVC.didMoveToParentViewController(self)
-//        let views = ["view": venuesTableVC.view]
-        
-        
-//        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[view]-0-|", options:NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
-//        view.addConstraints(horizontalConstraints)
-//        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
-//        view.addConstraints(verticalConstraints)
-
     }
     
 

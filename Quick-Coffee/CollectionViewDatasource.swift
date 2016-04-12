@@ -51,8 +51,7 @@ class AbstractCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         let imageUrl = NSString(format: "%@%@%@", prefix, imageSize, suffix)
         
         let url = NSURL(string: imageUrl as String)
-        let netWrkObj = Networking()
-        netWrkObj.getDataAtUrl(url!) { (success, obj) -> (Void) in
+        Networking().getDataAtUrl(url!) { (success, obj) -> (Void) in
             guard success == true else {
                 return;
             }

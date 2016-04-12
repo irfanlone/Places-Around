@@ -109,7 +109,6 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
     func loadVenues() {
         self.list.removeAll()
         
-        let netWrkObj = Networking()
         let baseUrl = "https://api.foursquare.com/"
         let operation = "v2/venues/search?"
         var searchTerm = self.searchTextField.text! as String
@@ -121,7 +120,7 @@ class SearchViewController : UIViewController, UITextFieldDelegate {
         
         let urlString = NSString(format: "%@%@query=%@&client_id=%@&client_secret=%@&ll=%f%%2C%f&v=%@", baseUrl,operation,searchTerm,kCLIENTID,kCLIENTSECRET,self.currentLocation.coordinate.latitude,self.currentLocation.coordinate.longitude ,dateStr)
         let url = NSURL(string: urlString as String)
-        netWrkObj.getDataAtUrl(url!) { (success, obj) -> (Void) in
+        Networking().getDataAtUrl(url!) { (success, obj) -> (Void) in
             guard success == true else {
                 return;
             }

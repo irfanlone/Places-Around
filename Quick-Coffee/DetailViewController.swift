@@ -28,7 +28,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         self.dataSource = AbstractCollectionViewDataSource()
         self.collectionView.dataSource = dataSource
         
@@ -114,7 +113,7 @@ class DetailViewController: UIViewController {
 
     private func loadPhotos() {
 
-        PhotosViewController.getPhotoForVenue(venue.identifier) { (photosList) -> (Void) in
+        getPhotoForVenue(venue.identifier) { (photosList) -> (Void) in
             self.photosList = photosList
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.dataSource.photosList = self.photosList

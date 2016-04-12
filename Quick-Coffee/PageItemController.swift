@@ -38,8 +38,7 @@ class PageItemController: UIViewController {
         super.viewDidLoad()
         
         let url = NSURL(string: imageUrl)
-        let netWrkObj = Networking()
-        netWrkObj.getDataAtUrl(url!) { (success, obj) -> (Void) in
+        Networking().getDataAtUrl(url!) { (success, obj) -> (Void) in
             guard success == true else {
                 return;
             }

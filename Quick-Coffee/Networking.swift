@@ -29,9 +29,17 @@ struct NetworkResponseObj {
 }
 
 
-class Networking: NSObject {
+
+protocol NetworkProtocol {
+    
+    func getDataAtUrl(url: NSURL, completion:(Bool, NetworkResponseObj) -> (Void))
+
+}
+
+struct Networking : NetworkProtocol {
     
     func getDataAtUrl(url: NSURL, completion:(Bool, NetworkResponseObj) -> (Void)) {
+        
         let session = NSURLSession.sharedSession()
         
         let task = session.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
@@ -41,7 +49,7 @@ class Networking: NSObject {
                 completion(false, resObj)
                 return
             }
-
+            
             let httpRespose = respose as! NSHTTPURLResponse
             let responseObj = NetworkResponseObj(_data: data!, _response: httpRespose, _error: error)
             
