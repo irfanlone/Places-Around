@@ -40,7 +40,7 @@ class PageItemController: UIViewController {
         let url = NSURL(string: imageUrl)
         Networking().getDataAtUrl(url!) { (success, obj) -> (Void) in
             guard success == true else {
-                return;
+                return
             }
             if let image = UIImage(data: obj.data) {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in

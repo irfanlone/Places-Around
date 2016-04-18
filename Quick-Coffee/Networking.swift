@@ -10,7 +10,7 @@ import UIKit
 
 protocol NetworkProtocol {
     
-    func getDataAtUrl(url: NSURL, completion:(Bool, NetworkResponseObj) -> (Void))
+    func getDataAtUrl(url: NSURL, session: NSURLSession, completion:(Bool, NetworkResponseObj) -> (Void))
     
 }
 
@@ -34,33 +34,41 @@ struct NetworkResponseObj {
 }
 
 
-struct Networking : NetworkProtocol {
+class Networking : NetworkProtocol {
     
-    func getDataAtUrl(url: NSURL, completion:(Bool, NetworkResponseObj) -> (Void)) {
+    var completion: ((Bool, NetworkResponseObj) -> Void)!
+    
+    func getDataAtUrl(url: NSURL, session: NSURLSession = NSURLSession.sharedSession(),  completion:(Bool, NetworkResponseObj) -> (Void)) {
         
-        let session = NSURLSession.sharedSession()
-        
-        let task = session.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
-            
-            guard let respose = response else {
-                let resObj = NetworkResponseObj()
-                completion(false, resObj)
-                return
-            }
-            
-            let httpRespose = respose as! NSHTTPURLResponse
-            let responseObj = NetworkResponseObj(_data: data!, _response: httpRespose, _error: error)
-            
-            if error != nil {
-                print("error: \(error!.localizedDescription): \(error!.userInfo)")
-                completion(false, responseObj)
-            }
-            else if data != nil {
-                completion(true, responseObj)
-            }
-            
-        })
+        self.completion = completion
+        let task = session.dataTaskWithURL(url, completionHandler: parseServerData)
         task.resume()
     }
+    
+    func parseServerData(data: NSData?, response: NSURLResponse?, error: NSError?) {
+
+        guard error == nil else {
+            print("error: \(error!.localizedDescription): \(error!.userInfo)")
+            return
+        }
+
+        guard let data = data else {
+            print("Failed to download data from server.")
+            return
+        }
+        
+        var httpRespose : NSHTTPURLResponse!
+        if response != nil  {
+            httpRespose = response as! NSHTTPURLResponse
+        } else {
+            print("Failed to get the response.")
+            return
+        }
+        
+        let responseObj = NetworkResponseObj(_data: data, _response: httpRespose, _error: error)
+        
+        completion!(true, responseObj)
+    }
+    
 }
 

@@ -15,7 +15,7 @@ protocol VenuesGettable {
     
     func getVenuesForSearchString(ct: String, location : CLLocation, completionHandler: [Venue] -> (Void))
     
-    func getVenuesAt(urlString: String, ntwrkng: Networking, completionHandler: [Venue] -> (Void))
+    func getVenuesAtUrlString(urlString: String, ntwrkng: Networking, completionHandler: [Venue] -> (Void))
     
 }
 
@@ -32,7 +32,7 @@ struct venuesController : VenuesGettable {
         
         let urlString = NSString(format: "%@%@categoryId=%@&client_id=%@&client_secret=%@&ll=%f%%2C%f&v=%@", baseUrl,operation,categoryId,kCLIENTID,kCLIENTSECRET,location.coordinate.latitude,location.coordinate.longitude,dateStringForCurrentDate())
         
-        getVenuesAt(urlString as String) { venues -> (Void) in
+        getVenuesAtUrlString(urlString as String) { venues -> (Void) in
             completionHandler(venues)
         }
     }
@@ -43,16 +43,16 @@ struct venuesController : VenuesGettable {
         
         let urlString = NSString(format: "%@%@query=%@&client_id=%@&client_secret=%@&ll=%f%%2C%f&v=%@", baseUrl,operation,searchTerm,kCLIENTID,kCLIENTSECRET,location.coordinate.latitude,location.coordinate.longitude,dateStringForCurrentDate())
         
-        getVenuesAt(urlString as String) { venues -> (Void) in
+        getVenuesAtUrlString(urlString as String) { venues -> (Void) in
             completionHandler(venues)
         }
     }
     
-    func getVenuesAt(urlString: String, ntwrkng: Networking = Networking() ,completionHandler: [Venue] -> (Void)) {
+    func getVenuesAtUrlString(urlString: String, ntwrkng: Networking = Networking() ,completionHandler: [Venue] -> (Void)) {
         let url = NSURL(string: urlString as String)
         ntwrkng.getDataAtUrl(url!) { (success, obj) -> (Void) in
             guard success == true else {
-                return;
+                return
             }
             var parsed : AnyObject!
             do {
@@ -68,7 +68,7 @@ struct venuesController : VenuesGettable {
         }
     }
     
-    func processJsonDataToVenues(json: AnyObject) -> [Venue] {
+    private func processJsonDataToVenues(json: AnyObject) -> [Venue] {
         let response = json.valueForKey("response")
         let venues: NSArray = response?.valueForKey("venues") as! NSArray
         

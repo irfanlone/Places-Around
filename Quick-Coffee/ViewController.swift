@@ -101,6 +101,7 @@ extension ViewController : LocationUpdateProtocol {
     func locationDidUpdateToLocation(location: CLLocation) {
         self.currentLocation = location
     }
+    
 }
 
 extension ViewController : DismissedCategoryViewProtocol {
@@ -109,6 +110,7 @@ extension ViewController : DismissedCategoryViewProtocol {
         self.category = category
         self.loadVenues()
     }
+    
 }
 
 
