@@ -23,6 +23,7 @@
 		176FA87D1CA6078300BF9841 /* VenuesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176FA87C1CA6078300BF9841 /* VenuesTableViewDataSource.swift */; };
 		177DFF121CA40EF100673B20 /* CollectionViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177DFF111CA40EF100673B20 /* CollectionViewDatasource.swift */; };
 		177DFF161CA4336600673B20 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177DFF151CA4336600673B20 /* CategoryViewController.swift */; };
+		178040F41CC62113008DC090 /* VenuesControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178040F31CC62113008DC090 /* VenuesControllerTests.swift */; };
 		17B3CBEA1CA0FA19002A5790 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B3CBE91CA0FA19002A5790 /* PhotosViewController.swift */; };
 		17B3CBEF1CA135C9002A5790 /* PhotosPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B3CBEE1CA135C9002A5790 /* PhotosPageViewController.swift */; };
 		17B3CBF11CA1384C002A5790 /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B3CBF01CA1384C002A5790 /* PageItemController.swift */; };
@@ -66,6 +67,7 @@
 		176FA87C1CA6078300BF9841 /* VenuesTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuesTableViewDataSource.swift; sourceTree = "<group>"; };
 		177DFF111CA40EF100673B20 /* CollectionViewDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDatasource.swift; sourceTree = "<group>"; };
 		177DFF151CA4336600673B20 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		178040F31CC62113008DC090 /* VenuesControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuesControllerTests.swift; sourceTree = "<group>"; };
 		17B3CBE91CA0FA19002A5790 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		17B3CBEE1CA135C9002A5790 /* PhotosPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosPageViewController.swift; sourceTree = "<group>"; };
 		17B3CBF01CA1384C002A5790 /* PageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageItemController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				174E76D91CBCF78C00CB5186 /* Quick_CoffeeTests.swift */,
 				174E76DB1CBCF78C00CB5186 /* Info.plist */,
 				174E76E31CBCF88000CB5186 /* NetworkingTests.swift */,
+				178040F31CC62113008DC090 /* VenuesControllerTests.swift */,
 			);
 			path = "Quick-CoffeeTests";
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				174E76F11CBCFEF100CB5186 /* Networking.swift in Sources */,
 				174E76DA1CBCF78C00CB5186 /* Quick_CoffeeTests.swift in Sources */,
 				174E76E41CBCF88000CB5186 /* NetworkingTests.swift in Sources */,
+				178040F41CC62113008DC090 /* VenuesControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +487,7 @@
 				174E76E01CBCF78C00CB5186 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

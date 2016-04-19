@@ -8,14 +8,7 @@
 
 import Foundation
 
-protocol PhotosGettable {
-    
-    func getPhotoForVenue(venueId: String, ntwrkng: Networking, completion:([AnyObject]) -> (Void))
-
-}
-
-
-struct DownloadPhotos : PhotosGettable {
+struct DownloadPhotos {
     
     let baseUrl = "https://api.foursquare.com/v2/venues/"
     let operation = "/photos?"
